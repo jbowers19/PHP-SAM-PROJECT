@@ -1,9 +1,16 @@
 <?php
 //pull JSON from provided links, and decode
-$url = 'https://beta.sam.gov/api/prod/view-details/v1/api/entity/962006297?sort=name';
-$sam1 = file_get_contents($url);
+try{ $url = 'https://beta.sam.gov/api/prod/view-details/v1/api/entity/962006297?sort=name';
 
-$jsondata = json_decode($sam1, true);
+}catch (exception $e) {
+
+header('location: https://google.com');
+
+}
+
+//$sam1 = file_get_contents($url);
+
+$jsondata = json_decode(file_get_content($url), true);
 
 //Create Array to put the naics Values
 $array = array();
